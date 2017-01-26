@@ -178,14 +178,15 @@ CREATE TABLE IF NOT EXISTS item
   item_id integer PRIMARY KEY,
   name varchar(30),
   description TEXT
-  price integer
+  price integer CHECK ( price > 0 AND price < 1000000)
 );
 -- 2
 CREATE TABLE IF NOT EXISTS order
 (
   order_id integer PRIMARY KEY,
   `date` date,
-  receiver text
+  receiver text,
+  CHECK ( date > '2016-01-01' AND order_id > -1 )
 );
 -- 3
 CREATE TABLE IF NOT EXISTS element
