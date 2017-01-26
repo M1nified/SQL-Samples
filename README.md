@@ -2,3 +2,5 @@
 
 - [CREATE](CREATE.md)
 - [INSERT](INSERT.md)
+
+- [ERD](ERD.md)

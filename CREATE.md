@@ -198,7 +198,8 @@ CREATE TABLE IF NOT EXISTS element
 -- 4
 CREATE TABLE IF NOT EXISTS ordered_item
 (
-  order_id integer REFERENCES order (order_id), -- (order_id) is not required if the column name in `order` is the same
+  order_id integer REFERENCES order (order_id), -- (order_id) is not required
+                                                -- if the column name in `order` is the same
   item_id integer REFERENCES item,
   quantity integer,
   PRIMARY KEY ( order_id, item_id )
@@ -234,4 +235,4 @@ CREATE TABLE IF NOT EXISTS content
 )
 ```
 The above code produces schema shown below   
-->![Schema 1](pic/schema_1.jpg)<-
+![Schema 1](pic/schema_1.jpg)
