@@ -33,10 +33,6 @@ GRANT ALL PRIVILEGES ON table_name_2 TO user_name_2;
 ```
 
 ```sql
-GRANT role_name_1 TO user_name_1;
-```
-
-```sql
 GRANT ALL PRIVILEGES
   ON ALL TABLES IN SCHEMA schema_name_1
   TO user_name_1;
@@ -58,6 +54,9 @@ GRANT SELECT, UPDATE, INSERT, DELETE
 ```sql
 GRANT group_name_1  -- GRANTs membership in group/role group_name_1
   TO user_name_1;   -- TO user user_name_1
+
+GRANT role_name_1 
+  TO user_name_1;
 ```
 
 ## REVOKE
