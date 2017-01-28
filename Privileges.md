@@ -44,15 +44,26 @@ GRANT ALL PRIVILEGES
 
 ```sql
 GRANT ALL PRIVILEGES
-  ON table_name_1
+  ON table_name_1, table_name_2, table_name_3
   TO user_name_1
   WITH GRANT OPTION;
+```
+
+```sql
+GRANT SELECT, UPDATE, INSERT, DELETE
+  ON ALL TABLES
+  TO GROUP group_name_1;
+```
+
+```sql
+GRANT group_name_1  -- GRANTs membership in group/role group_name_1
+  TO user_name_1;   -- TO user user_name_1
 ```
 
 ## REVOKE
 
 ```sql
-REVOKE ALL PRIVILEGES ON table_name_1 FROM PUBLIC;
+REVOKE ALL PRIVILEGES ON table_name_1 FROM PUBLIC; -- revoke for all users
 REVOLE INSERT ON table_name_1 FROM user_name_1;
 ```
 
@@ -70,3 +81,9 @@ DROP USER user_to_be_removed_1;
 ```sql
 SELECT user_name_1 FROM pg_user;
 ```
+
+```sql
+CREATE ROLE group_name_1 -- CREATE GROUP is an alias
+WITH CREATEDB CREATEROLE;
+```
+

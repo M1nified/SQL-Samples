@@ -177,14 +177,14 @@ CREATE TABLE IF NOT EXISTS item
 (
   item_id integer PRIMARY KEY,
   name varchar(30),
-  description TEXT
+  description TEXT,
   price integer CHECK ( price > 0 AND price < 1000000)
 );
 -- 2
-CREATE TABLE IF NOT EXISTS order
+CREATE TABLE IF NOT EXISTS "order"
 (
   order_id integer PRIMARY KEY,
-  `date` date,
+  "date" date,
   receiver text,
   CHECK ( date > '2016-01-01' AND order_id > -1 )
 );
@@ -199,8 +199,8 @@ CREATE TABLE IF NOT EXISTS element
 -- 4
 CREATE TABLE IF NOT EXISTS ordered_item
 (
-  order_id integer REFERENCES order (order_id), -- (order_id) is not required
-                                                -- if the column name in `order` is the same
+  order_id integer REFERENCES "order" (order_id), -- (order_id) is not required
+                                                -- if the column name in "order" is the same
   item_id integer REFERENCES item,
   quantity integer,
   PRIMARY KEY ( order_id, item_id )
@@ -208,21 +208,21 @@ CREATE TABLE IF NOT EXISTS ordered_item
 -- 5
 CREATE TABLE IF NOT EXISTS parcel
 (
-  `number` integer,
+  "number" integer,
   item_id integer REFERENCES item,
   code varchar(10),
   price integer,
-  PRIMARY KEY ( `number`, item_id)
+  PRIMARY KEY ( "number", item_id)
 );
 -- 6
 CREATE TABLE IF NOT EXISTS ordered_parcel
 (
-  order_id integer REFERENCES order,
-  `number` integer,
+  order_id integer REFERENCES "order",
+  "number" integer,
   item_id integer,
   quantity integer,
-  PRIMARY KEY ( order_id, `number`, item_id ),
-  FOREIGN KEY ( `number`, item_id ) REFERENCES parcel ( `numer`, item_id)
+  PRIMARY KEY ( order_id, "number", item_id ),
+  FOREIGN KEY ( "number", item_id ) REFERENCES parcel ( "number", item_id)
 );
 -- 7
 CREATE TABLE IF NOT EXISTS content
@@ -231,9 +231,9 @@ CREATE TABLE IF NOT EXISTS content
   item_id integer,
   element_id integer REFERENCES element,
   quantity integer,
-  PRIMARY KEY ( `number`, item_id, element_id ),
-  FOREIGN KEY ( `number`, item_id ) REFERENCES parcel
-)
+  PRIMARY KEY ( "number", item_id, element_id ),
+  FOREIGN KEY ( "number", item_id ) REFERENCES parcel
+);
 ```
 The above code produces schema shown below   
 ![Schema 1](pic/schema_1.jpg)
