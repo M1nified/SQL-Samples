@@ -140,6 +140,18 @@ SELECT * FROM function_name_1(
 );
 ```
 
+```sql
+CREATE OR REPLACE FUNCTION function_name_1(
+  ...
+)
+RETURNS void
+AS $$
+  BEGIN
+    ...
+  END;
+$$ LANGUAGE plpgsql;
+```
+
 ## Table
 
 [https://www.postgresql.org/docs/9.2/static/sql-createtable.html](https://www.postgresql.org/docs/9.2/static/sql-createtable.html)
