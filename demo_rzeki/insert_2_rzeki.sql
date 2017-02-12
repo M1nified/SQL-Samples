@@ -1,11 +1,7 @@
-﻿DO $do$
-DECLARE
-BEGIN
-	FOR i IN 1..100 LOOP
-		INSERT INTO rzeki VALUES (
-			i,
-			CONCAT('nazwa_rzeki_',i)
-		);
-	END LOOP;
-END
-$do$
+﻿SET search_path TO rzeki;
+INSERT INTO rzeki 
+SELECT
+	i as id_rzeki,
+	CONCAT('nazwa_rzeki_',i) as nazwa
+FROM
+	generate_series(1,100) as l(i);
